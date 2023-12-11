@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  outline: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+a {
+  font-size: 18px;
+  color: #aaf;
+  text-decoration: none;
+}
+
+body {
+  color: #fad;
+  background-color: #121212;
+  padding: 2.5rem;
+}
+
+.search-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  align-items: center;
+  margin: 15px 0 30px 0;
+}
+
+form {
+  border: 1px solid red;
+  display: flex;
+  max-width: 400px;
+}
