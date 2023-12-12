@@ -99,14 +99,27 @@ function detectEnd() {
 async function handleSearch(e) {
   e.preventDefault();
   const searchTerm = query.value.trim();
-  if (searchTerm) {
+   if (searchTerm.length < 2) {
+   
+    Swal.fire({
+      icon: "info",
+      title: "sorry",
+        text: "input at least 2 characters.",
+        customClass: {
+          popup:'my-custom-size',
+      }
+    });
+    return;
+  }
+
+
     isSearching = true;
     clearResults();
     const newUrl = `${searchUrl}${searchTerm}&page=${page}`;
     await fetchAndShowResult(newUrl);
     query.value = "";
   }
-}
+
 
 form.addEventListener("submit", handleSearch);
 window.addEventListener("scroll", detectEnd);
