@@ -31,8 +31,8 @@ function createMovieCard(movie) {
   const { poster_path, original_title, release_date, overview } = movie;
   const imagePath = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
-        : "./img/error.png";
-    const truncatedTitle =
+    : "./img/error.png";
+  const truncatedTitle =
     original_title.length > 15
       ? original_title.slice(0, 15) + "..."
       : original_title;
@@ -62,7 +62,6 @@ function createMovieCard(movie) {
     `;
   return cardTemplate;
 }
-
 
 function clearResults() {
   if (result) {
@@ -99,27 +98,24 @@ function detectEnd() {
 async function handleSearch(e) {
   e.preventDefault();
   const searchTerm = query.value.trim();
-   if (searchTerm.length < 2) {
-   
+  if (searchTerm.length < 2) {
     Swal.fire({
       icon: "info",
       title: "sorry",
-        text: "input at least 2 characters.",
-        customClass: {
-          popup:'my-custom-size',
-      }
+      text: "input at least 2 characters.",
+      customClass: {
+        popup: "my-custom-size",
+      },
     });
     return;
   }
 
-
-    isSearching = true;
-    clearResults();
-    const newUrl = `${searchUrl}${searchTerm}&page=${page}`;
-    await fetchAndShowResult(newUrl);
-    query.value = "";
-  }
-
+  isSearching = true;
+  clearResults();
+  const newUrl = `${searchUrl}${searchTerm}&page=${page}`;
+  await fetchAndShowResult(newUrl);
+  query.value = "";
+}
 
 form.addEventListener("submit", handleSearch);
 window.addEventListener("scroll", detectEnd);
@@ -127,7 +123,7 @@ window.addEventListener("resize", detectEnd);
 
 async function init() {
   clearResults();
-  const url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${apiKey}&page=${page}`;
+  const url = `https://api.themoviedb.org/3/discover/movie?sort_by=release_date.desc&api_key=${apiKey}&page=${page}`;
   isSearching = false;
   await fetchAndShowResult(url);
 }
