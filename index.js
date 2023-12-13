@@ -123,7 +123,7 @@ window.addEventListener("resize", detectEnd);
 
 async function init() {
   clearResults();
-  const url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity_date.desc&api_key=${apiKey}&page=${page}`;
+  const url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${apiKey}&page=${page}`;
   isSearching = false;
   await fetchAndShowResult(url);
 }
